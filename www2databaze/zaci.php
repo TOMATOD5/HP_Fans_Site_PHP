@@ -1,35 +1,17 @@
 <?php
 
-
-    $db_host = "127.0.0.1";
-    $db_user = "root";
-    $db_password = null;
-    $db_name = "skola";
-
-
-    $connection = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-
-
-    if (mysqli_connect_error()){
-        echo mysqli_connect_error();
-        exit;
-    }
-
-
-    // echo "Úspěšné přihlášení do databáze";
+    require "database.php";
 
     $sql = "SELECT * FROM student";
-    // echo "<br>";
-
-
+   
     $result = mysqli_query($connection, $sql);
-    // var_dump($result);
-    // echo "<br>";
-    // echo "<br>";
-    
-    $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    // var_dump($students);
 
+    if($result === false) {
+        echo mysqli_error($connection);
+    } else {
+        $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+    
 ?>
 
 <!DOCTYPE html>
