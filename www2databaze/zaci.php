@@ -53,6 +53,8 @@
             <?php endforeach ?>
         </ul>
     <?php endif ?>
+    
+    <a href="index.php">Zpět na hlavní stranu</a>
 
 </body>
 </html>
