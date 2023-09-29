@@ -1,6 +1,5 @@
 <?php
 
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
    
     require "assets/database.php";
@@ -9,6 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
     VALUES (?, ?, ?, ?, ?)";
    
+   $connection = connectionDB();
+
     $statement = mysqli_prepare($connection, $sql);
 
 
@@ -20,17 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if(mysqli_stmt_execute($statement)) {
             $id = mysqli_insert_id($connection);
-            echo "Úspěšně vložen žák s id: $id";
+            //echo "Úspěšně vložen žák s id: $id";
+            header("location: jeden-zak.php?id=$id");
+
         } else {
             echo mysqli_stmt_error($statement);
         }
     }
 }
 
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="cs">
@@ -44,21 +44,52 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php require "assets/header.php"; ?>
 
     <main>
-
-    <section class="add-form">
-
+        <section class="add-form">
         <form action="pridat-zaka.php" method="POST">
-            <input type="text" name="first_name" placeholder="Křestní jméno"><br>
-            <input type="text" name="second_name" placeholder="Příjmení"><br>
-            <input type="number" name="age" placeholder="Věk" min="10"><br>
-            <textarea name="life" placeholder="Podrobnosti o žákovi"></textarea><br>
-            <input type="text" name="college" placeholder="Kolej"><br>
-            <input type="submit" value="Přidat">
-        </form>    
+                <input  type="text"
+                        name="first_name"
+                        placeholder="Křestní jméno"
+                        value="<?= htmlspecialchars($first_name)  ?>"
+                        required
+                ><br>
 
-    </section>
 
+                <input  type="text"
+                        name="second_name"
+                        placeholder="Příjmení"
+                        value="<?= htmlspecialchars($second_name) ?>"
+                        required
+                ><br>
+
+
+                <input type="number"
+                        name="age"
+                        placeholder="Věk"
+                        min="10"
+                        value="<?= htmlspecialchars($age) ?>"  
+                        required
+                ><br>
+
+
+                <textarea   name="life"
+                            placeholder="Podrobnosti o žákovi"
+                            required><?= htmlspecialchars($life) ?></textarea><br>
+
+
+                <input type="text"
+                        name="college"
+                        placeholder="Kolej"
+                        value="<?= htmlspecialchars($college) ?>"  
+                        required
+                ><br>
+
+
+                <input type="submit" value="Přidat">
+            </form>
+
+        </section>
     </main>
+
 
     <?php require "assets/footer.php"; ?>
 

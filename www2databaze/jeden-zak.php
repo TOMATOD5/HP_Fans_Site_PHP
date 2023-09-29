@@ -3,6 +3,8 @@
 
     require "assets/database.php";
 
+    $connection = connectionDB();
+
     if ( isset($_GET["id"]) and is_numeric($_GET["id"]) ) {
         $sql = "SELECT *
             FROM student
@@ -38,15 +40,15 @@
             </section>
 
             <section>
-                <?php if ($students === null): ?>
-                    <p>Žák nenalezen</p>
-                <?php else: ?>
-                    <h2><?= $students["first_name"]. " " .$students["second_name"] ?></h2>
-                    <p>Věk: <?= $students["age"] ?></p>
-                    <p>Dodatečné informace: <?= $students["life"] ?></p>
-                    <p>Kolej: <?= $students["college"] ?></p>
-                <?php endif ?>    
-            </section>
+            <?php if ($students === null): ?>
+                <p>Žák nenalezen</p>
+            <?php else: ?>
+                <h2><?= htmlspecialchars($students["first_name"]). " " .htmlspecialchars($students["second_name"]) ?></h2>
+                <p>Věk: <?= htmlspecialchars($students["age"]) ?></p>
+                <p>Dodatečné informace: <?= htmlspecialchars($students["life"]) ?></p>
+                <p>Kolej: <?= htmlspecialchars($students["college"]) ?></p>
+            <?php endif ?>    
+        </section>
 
         </main>
 
