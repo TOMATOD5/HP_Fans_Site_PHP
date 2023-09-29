@@ -29,3 +29,5 @@
     </body>
 
 </html>
+
+<!-- http://localhost/HP_Fans_Site_PHP/www2databaze/index.php      přístup na index --> 
