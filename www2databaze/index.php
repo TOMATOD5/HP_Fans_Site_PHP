@@ -8,18 +8,22 @@
     <title>Škola čar a kouzel v Bradavicích</title>
 </head>
 <body>
-    <header>
-        <h1>Škola čar a kouzel v Bradavicích</h1>
-    </header>
+
+    <?php require "header.php"; ?>
 
 
     <main>
+        <section class="main-heding">
+            <h1>Škola čar a kouzel v Bradavicích</h1>
+        </section>
+
+
         <section>
             <a href="zaci.php">Seznam všech žáků</a>
         </section>
     </main>
 
-
-    <footer></footer>
+    <?php require "footer.php"; ?>
+    
 </body>
 </html>

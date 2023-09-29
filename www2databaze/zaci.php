@@ -22,23 +22,35 @@
     <title>Naši žáci</title>
 </head>
 <body>
-    
-    <h1>Seznam žáků školy</h1>
 
-    <?php if(empty($students)): ?>
-        <p>Žádní žáci nebyli nalezeni</p>
-    <?php else: ?>
-        <ul>
-            <?php foreach($students as $one_student): ?>
-                <li>
-                    <?php echo $one_student["first_name"]. " " .$one_student["second_name"] ?>
-                </li>
-                <a href="jeden-zak.php?id=<?= $one_student["id"] ?>">Více informací</a>
-            <?php endforeach ?>
-        </ul>
-    <?php endif ?>
+    <?php require "header.php"; ?>
+
+    <main>
+        <section class="students-list">
+
+            <h1>Seznam žáků školy</h1>
+
+                <?php if(empty($students)): ?>
+                    <p>Žádní žáci nebyli nalezeni</p>
+                <?php else: ?>
+                    <ul>
+                        <?php foreach($students as $one_student): ?>
+                            <li>
+                                <?php echo $one_student["first_name"]. " " .$one_student["second_name"] ?>
+                            </li>
+                            <a href="jeden-zak.php?id=<?= $one_student["id"] ?>">Více informací</a>
+                        <?php endforeach ?>
+                    </ul>
+                <?php endif ?>
+                
+                <a href="index.php">Zpět na hlavní stranu</a>
+
+        </section>
+    </main>
+
+    <?php require "footer.php"; ?>
     
-    <a href="index.php">Zpět na hlavní stranu</a>
+    
 
 </body>
 </html>

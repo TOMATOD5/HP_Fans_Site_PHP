@@ -27,10 +27,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informace o žákovi</title>
 </head>
+
 <body>
-    <header>
-        <h1>Informace o žákovi</h1>
-    </header>
+
+    <?php require "header.php"; ?>
 
     <main>
 
@@ -47,8 +47,7 @@
 
     </main>
 
-    <footer>
+    <?php require "footer.php"; ?>
 
-    </footer>
 </body>
 </html>
