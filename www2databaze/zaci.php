@@ -26,6 +26,7 @@
     // var_dump($result);
     // echo "<br>";
     // echo "<br>";
+    
     $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
     // var_dump($students);
 
@@ -50,6 +51,7 @@
                 <li>
                     <?php echo $one_student["first_name"]. " " .$one_student["second_name"] ?>
                 </li>
+                <a href="jeden-zak.php?id=<?= $one_student["id"] ?>">Více informací</a>
             <?php endforeach ?>
         </ul>
     <?php endif ?>

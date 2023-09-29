@@ -19,11 +19,10 @@
 
     $sql = "SELECT *
             FROM student
-            WHERE id = 1";
+            WHERE id = ". $_GET["id"];
 
 
     $result = mysqli_query($connection, $sql);
-
 
     $students = mysqli_fetch_assoc($result);
     // var_dump($students);
@@ -45,6 +44,17 @@
     </header>
 
     <main>
+
+        <section>
+            <?php if ($students === null): ?>
+                <p>Žák nenalezen</p>
+            <?php else: ?>
+                <h2><?= $students["first_name"]. " " .$students["second_name"] ?></h2>
+                <p>Věk: <?= $students["age"] ?></p>
+                <p>Dodatečné informace: <?= $students["life"] ?></p>
+                <p>Kolej: <?= $students["college"] ?></p>
+            <?php endif ?>    
+        </section>
 
     </main>
 
