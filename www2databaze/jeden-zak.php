@@ -41,6 +41,10 @@
             <?php endif ?>    
         </section>
 
+        <section class="buttons">
+            <a href="editace-zaka.php?id=<?= $students['id'] ?>">Editovat</a>
+        </section>  
+
         </main>
 
         <?php require "assets/footer.php"; ?>

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $statement = mysqli_prepare($connection, $sql);
 
 
-    if ($statement === false) {
+     if ($statement === false) {
         echo mysqli_error($connection);
     } else {
         mysqli_stmt_bind_param($statement, "ssiss", $_POST["first_name"], $_POST["second_name"], $_POST["age"], $_POST["life"], $_POST["college"]);
