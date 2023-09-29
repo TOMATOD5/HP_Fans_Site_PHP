@@ -2,8 +2,8 @@
 
 
     $db_host = "127.0.0.1";
-    $db_user = "david";
-    $db_password = "admin123";
+    $db_user = "root";
+    $db_password = null;
     $db_name = "skola";
 
 
