@@ -1,14 +1,30 @@
 <?php
 
+
+require "assets/database.php";
+
+
+$first_name = null;
+$second_name = null;
+$age = null;
+$life = null;
+$college = null;
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+
+    $first_name = $_POST["first_name"];
+    $second_name = $_POST["second_name"];
+    $age = $_POST["age"];
+    $life = $_POST["life"];
+    $college = $_POST["college"];
    
-    require "assets/database.php";
-
-
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
     VALUES (?, ?, ?, ?, ?)";
+
    
-   $connection = connectionDB();
+    $connection = connectionDB();
 
     $statement = mysqli_prepare($connection, $sql);
 
@@ -21,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if(mysqli_stmt_execute($statement)) {
             $id = mysqli_insert_id($connection);
-            //echo "Úspěšně vložen žák s id: $id";
+            // echo "Úspěšně vložen žák s id: $id";
             header("location: jeden-zak.php?id=$id");
-
         } else {
             echo mysqli_stmt_error($statement);
         }
     }
+
 }
 
 ?>
@@ -86,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <input type="submit" value="Přidat">
             </form>
+
 
         </section>
     </main>
