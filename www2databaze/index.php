@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
 
 
     <main>
@@ -23,7 +23,7 @@
         </section>
     </main>
 
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
     
 </body>
 </html>

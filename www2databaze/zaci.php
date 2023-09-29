@@ -1,6 +1,6 @@
 <?php
 
-    require "database.php";
+    require "assets/database.php";
 
     $sql = "SELECT * FROM student";
    
@@ -23,12 +23,18 @@
 </head>
 <body>
 
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
 
     <main>
+
+        <section class="main-heding">
+            <h1>Seznam žáků školy</h1>
+        </section>
+
+
         <section class="students-list">
 
-            <h1>Seznam žáků školy</h1>
+            
 
                 <?php if(empty($students)): ?>
                     <p>Žádní žáci nebyli nalezeni</p>
@@ -48,7 +54,7 @@
         </section>
     </main>
 
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
     
     
 

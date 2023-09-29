@@ -1,7 +1,7 @@
 
 <?php
 
-    require "database.php";
+    require "assets/database.php";
 
     if ( isset($_GET["id"]) and is_numeric($_GET["id"]) ) {
         $sql = "SELECT *
@@ -30,9 +30,12 @@
 
 <body>
 
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
 
     <main>
+        <section class="main-heding">
+            <h1>Informace o žákovi</h1>
+        </section>
 
         <section>
             <?php if ($students === null): ?>
@@ -47,7 +50,7 @@
 
     </main>
 
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
 
 </body>
 </html>
