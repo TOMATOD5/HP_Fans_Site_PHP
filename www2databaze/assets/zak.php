@@ -30,3 +30,65 @@ function getStudent($connection, $id) {
         }
     }
 }
+
+/**
+ *
+ * Updatuje informace o žákovi v databázi
+ *
+ * @param object $connection - napojení na databázi
+ * @param string $first_name - křestní jméno žáka
+ * @param string $second_name - příjmení žáka
+ * @param integer $age - věk žáka
+ * @param string $life - informace o žákovi
+ * @param string $college - kolej žáka
+ * @param integer $id - id žáka
+ *
+ * @return void
+ *
+ */
+function updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id){
+
+
+    $sql = "UPDATE student
+                   SET first_name = ?,
+                       second_name = ?,
+                       age = ?,
+                       life = ?,
+                       college = ?
+                WHERE id = ?";
+   
+    $stmt = mysqli_prepare($connection, $sql);
+
+    $statement = mysqli_prepare($connection, $sql);
+
+    if (!$stmt) {
+            echo mysqli_error($connection);
+    } else {
+        mysqli_stmt_bind_param($stmt, "ssissi", $first_name, $second_name, $age, $life, $college, $id);
+
+        /** PÚVODNÍ 
+         * 
+         *          if(mysqli_stmt_execute($stmt)) {
+         *              echo "Informace o žákovi byly upraveny";
+         *          }
+         * 
+         *  */
+
+
+         if ($statement === false) {
+            echo mysqli_error($connection);
+        } else {
+            mysqli_stmt_bind_param($statement, "ssiss", $_POST["first_name"], $_POST["second_name"], $_POST["age"], $_POST["life"], $_POST["college"]);
+    
+    
+            if(mysqli_stmt_execute($statement)) {
+                $id = mysqli_insert_id($connection);
+                // echo "Úspěšně vložen žák s id: $id";
+                header("location: jeden-zak.php?id=$id");
+            } else {
+                echo mysqli_stmt_error($statement);
+            }
+        }
+    
+    }
+}

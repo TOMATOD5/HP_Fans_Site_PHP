@@ -1,23 +1,54 @@
 <?php
 
+
     require "assets/database.php";
     require "assets/zak.php";
 
+
     $connection = connectionDB();
+
 
     if ( isset($_GET["id"]) ){
         $one_student = getStudent($connection, $_GET["id"]);
+        // var_dump($one_student);
 
-        $first_name = $one_student["first_name"];
-        $second_name = $one_student["second_name"];
-        $age = $one_student["age"];
-        $life = $one_student["life"];
-        $college = $one_student["college"];
+
+        if ($one_student) {
+            $first_name = $one_student["first_name"];
+            $second_name = $one_student["second_name"];
+            $age = $one_student["age"];
+            $life = $one_student["life"];
+            $college = $one_student["college"];
+            $id = $one_student["id"];
+
+
+        } else {
+            die("Student nenalezen");
+        }
+
+
     } else {
-        $one_student = null;
+        die("ID není zadáno, student nebyl nalezen");
     }
 
+
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $first_name = $_POST["first_name"];
+        $second_name = $_POST["second_name"];
+        $age = $_POST["age"];
+        $life = $_POST["life"];
+        $college = $_POST["college"];
+
+
+        updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id);
+    }
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
